@@ -10,7 +10,7 @@ const todoSchema = new mongoose.Schema({
         required: false
     },
     deadline: {
-        type: Date,
+        type: Date
     },
     createdBy: {
         type: String,

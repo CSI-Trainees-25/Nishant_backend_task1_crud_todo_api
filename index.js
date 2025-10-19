@@ -74,3 +74,16 @@ app.put('/api/todos/:id', async (req, res) => {
   }
 })
 
+app.delete('/api/todos/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const deletetodo = await Todo.findByIdAndDelete(id, req.body)
+    if (!deletetodo) {
+      return res.status(404).json({ message: "Todo not found" })
+    }
+    res.status(200).json(deletetodo)
+
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
