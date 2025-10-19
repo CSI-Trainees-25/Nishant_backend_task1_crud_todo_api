@@ -35,6 +35,19 @@ app.get('/api/todos',async(req,res) => {
      }
 })
 
+app.get('/api/todo/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const singletodos = await Todo.findById(id)
+
+    if (!singletodos) {
+      return res.status(404).json({ message: "Todo not found" })
+    }
+    res.status(200).json(singletodos)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+});
 
 
 
