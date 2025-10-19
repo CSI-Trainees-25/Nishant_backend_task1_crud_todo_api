@@ -24,11 +24,25 @@ connectdb()
     console.error("Database connection failed", error);
   });
 
+
+app.get('/api/todos',async(req,res) => {
+     try {
+       const alltodos= await Todo.find({})
+       res.status(200).json(alltodos)
+        
+     } catch (error) {
+      res.status(500).json({message:error.message})
+     }
+})
+
+
+
+
 app.post('/api/todos', async (req, res) => {
   try {
-    const newTodo = await Todo.create(req.body);
-    res.status(201).json(newTodo);
+    const newTodo = await Todo.create(req.body)
+    res.status(201).json(newTodo)
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message })
   }
 })

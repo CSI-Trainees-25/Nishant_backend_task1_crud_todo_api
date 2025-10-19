@@ -11,15 +11,10 @@ const todoSchema = new mongoose.Schema({
     },
     deadline: {
         type: Date,
-        required: true
     },
     createdBy: {
         type: String,
         required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
 },
     { timestamps: true }
