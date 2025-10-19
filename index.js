@@ -4,10 +4,14 @@ const app = express()
 import dotenv from 'dotenv'
 dotenv.config();
 import connectdb from './Src/DB/index.js';
+import Todo from './Src/models/todo.models.js'
+
 
 app.get('/', (req, res) => {
   res.send('hello todo api')
 })
+
+app.use(express.json()) ;
 
 connectdb()
   .then(() => {
@@ -20,7 +24,7 @@ connectdb()
     console.error("Database connection failed", error);
   });
 
-app.post('/api/todo', async (req, res) => {
+app.post('/api/todos', async (req, res) => {
   try {
     const newTodo = await Todo.create(req.body);
     res.status(201).json(newTodo);
