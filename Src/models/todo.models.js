@@ -3,11 +3,10 @@ import mongoose from "mongoose";
 const todoSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: [true,"pls enter the title"] 
     },
     description: {
-        type: String,
-        required: false
+        type: String
     },
     deadline: {
         type: Date

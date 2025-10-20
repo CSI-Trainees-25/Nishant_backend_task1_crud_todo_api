@@ -37,7 +37,7 @@ app.get('/api/todos', async (req, res) => {
 
 app.get('/api/todo/:id', async (req, res) => {
   try {
-    const { id } = req.params
+    const { id } = req.params      //body
     const singletodos = await Todo.findById(id)
 
     if (!singletodos) {
